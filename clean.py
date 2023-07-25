@@ -16,7 +16,9 @@ with open('./oz.md','r') as file:
 # コードをここに書いてください。
 # 置換した結果はtext_cleanedという
 # 変数に代入してください。
-
+trans_rule = dict.fromkeys('#.,":;!','')
+trans = str.maketrans(trans_rule)
+text_cleaned = text.translate(trans).casefold()
 # %%
 # ブロック3 [書き込み]
 #
@@ -24,5 +26,6 @@ with open('./oz.md','r') as file:
 # ファイルoz_cleaned.mdに出力する
 # コードをここに書いてください。
 # withブロックを使うこと。
-
+with open('oz_cleaned.md','w') as file:
+    file.write(text_cleaned)
 # %%

@@ -25,6 +25,9 @@ words = text.split()
 # であるcountを使うと楽です(教科書6.1.7)。
 # ヒント2：単語の重複を取り除きたいときは、集合
 # を使うことができます。
+count = dict()
+for w in set(words):
+    count[w] = words.count(w)
 
 # %%
 # ブロック4 [出力する行のリストの作成]
@@ -33,7 +36,7 @@ words = text.split()
 # output_linesをここで作成します。
 # ここでは、最初の4行だけ格納しておきます。
 output_lines = [
-    '# Word frequencies in chpater 1\n',
+    '# Word frequencies in chapter 1\n',
     '\n',
     '|word|count|\n',
     '|--|--|\n'
@@ -55,7 +58,9 @@ output_lines = [
 # ビルトイン関数のsortedを使うことができます。
 # ヒント3: 数字を文字列に変換するには、関数strを使う
 # ことができます。
-
+for k in sorted(count.keys()):
+    line = '|' + k + '|' + str(count[k]) + '|\n'
+    output_lines.append(line)
 # %%
 # ブロック6 [書き込み]
 # 
